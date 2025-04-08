@@ -12,7 +12,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, onDelete, onClick }) => {
   const handleDelete = async (e: React.MouseEvent) => {
     e.preventDefault(); // evitar navegación si usamos <Link href="#">
     try {
-      await axios.delete(`http://192.168.100.56:3001/movies/${movie._id}`);
+      await axios.delete(`http://${process.env.REACT_APP_API_IP}:3001/movies/${movie._id}`);
       onDelete(movie._id); // Llamar al padre para actualizar el estado
     } catch (error) {
       console.error(error);
