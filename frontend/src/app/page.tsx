@@ -11,7 +11,8 @@ export default function Home() {
 
   useEffect(() => {
     const fetchMovies = async () => {
-      const response = await axios.get("http://192.168.100.56:3001/movies");
+      console.log(process.env)
+      const response = await axios.get(`http://${process.env.REACT_APP_API_IP}:3001/movies`);
       setMovies(response.data);
     };
 

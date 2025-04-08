@@ -4,7 +4,7 @@ import axios from 'axios';
 import MovieForm from '../../../../components/MovieForm';
 import { useParams } from 'next/navigation';
 import { Movie } from '../../../../components/types';
-
+ 
 const EditMovie: React.FC = () => {
   const [movie, setMovie] = useState<Movie | null>(null);
   const router = useParams();
@@ -14,7 +14,7 @@ const EditMovie: React.FC = () => {
     const { id } = router;
     if (id) {
       const fetchMovie = async () => {
-        const response = await axios.get(`http://192.168.100.56:3001/movies/${id}`);
+        const response = await axios.get(`http://${process.env.REACT_APP_API_IP}:3001/movies/${id}`);
         setMovie(response.data);
       };
 

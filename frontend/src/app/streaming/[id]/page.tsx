@@ -6,6 +6,7 @@ import { useParams, useRouter } from "next/navigation";
 import { Movie } from "../../../../components/types";
 import videojs from "video.js";
 import "video.js/dist/video-js.css";
+ 
 
 const EditMovie: React.FC = () => {
   const [movie, setMovie] = useState<Movie | null>(null);
@@ -23,7 +24,7 @@ const EditMovie: React.FC = () => {
     if (id && isClient) {
       const fetchMovie = async () => {
         try {
-          const response = await axios.get(`http://192.168.100.56:3001/movies/${id}`);
+          const response = await axios.get(`http://${ process.env.REACT_APP_API_IP}:3001/movies/${id}`);
           setMovie(response.data);
         } catch (err) {
           console.error("Error fetching movie:", err);

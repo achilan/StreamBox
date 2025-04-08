@@ -3,6 +3,7 @@
 import { useState, useEffect, FormEvent } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+ 
 
 interface MovieFormProps {
   movie?: {
@@ -35,11 +36,11 @@ const MovieForm: React.FC<MovieFormProps> = ({ movie }) => {
 
     try {
       if (movie) {
-        await axios.put(`http://192.168.100.56:3001/movies/${movie._id}`, formData, {
+        await axios.put(`http://${ process.env.REACT_APP_API_IP}:3001/movies/${movie._id}`, formData, {
           headers: { 'Content-Type': 'multipart/form-data' },
         });
       } else {
-        await axios.post('http://192.168.100.56:3001/movies', formData, {
+        await axios.post(`http://${ process.env.REACT_APP_API_IP}:3001/movies`, formData, {
           headers: { 'Content-Type': 'multipart/form-data' },
         });
       }
