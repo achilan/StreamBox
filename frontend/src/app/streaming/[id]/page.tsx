@@ -74,10 +74,11 @@ const EditMovie: React.FC = () => {
       <video
         ref={videoNode}
         className="video-js vjs-default-skin absolute top-0 left-0 w-full h-full object-cover"
+        style={{ height: "100vh" }}
         data-setup="{}"
       >
         <source
-          src={`http://192.168.100.56:3001/${movie.movieFile}`}
+          src={`http://${process.env.REACT_APP_API_IP}:3001/${movie.movieFile}`}
           type="video/mp4"
         />
         Your browser does not support the video tag.

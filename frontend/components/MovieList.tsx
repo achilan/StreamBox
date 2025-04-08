@@ -14,7 +14,7 @@ const MovieList: React.FC<MovieListProps> = ({ movies }:any) => {
     router.push(`/streaming/${movie._id}`); // Navigate to the movie details page
   };
   return (
-    <div>
+    <div className="flex flex-wrap gap-4">
       {movies.map((movie:any) => (
         <MovieCard key={movie._id} movie={movie} onClick={() => onClick(movie)} />
       ))}
